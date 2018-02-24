@@ -85,6 +85,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         btn = (Button)findViewById(R.id.btn);
 
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    mService.onSendMsg("你好，我是客户端");
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
         bindService();
     }
     //绑定服务

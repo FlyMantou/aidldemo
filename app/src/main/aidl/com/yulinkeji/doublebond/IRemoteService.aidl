@@ -16,4 +16,6 @@ interface IRemoteService {
          * Remove a previously registered callback interface.
          */
         void unregisterCallback(IRemoteServiceCallback cb);
+
+        void onSendMsg(String str);
 }

@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
-                    mService.onSendMsg("你好，我是客户端");
+                    mService.onSendMsg("98 3C 64");
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }

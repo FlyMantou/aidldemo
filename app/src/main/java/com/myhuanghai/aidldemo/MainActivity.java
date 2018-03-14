@@ -30,35 +30,20 @@ public class MainActivity extends AppCompatActivity {
     private ServiceConnection mConnection = new ServiceConnection() {
         public void onServiceConnected(ComponentName className,
                                        IBinder service) {
-            // This is called when the connection with the service has been
-            // established, giving us the service object we can use to
-            // interact with the service.  We are communicating with our
-            // service through an IDL interface, so get a client-side
-            // representation of that from the raw service object.
             mService = IRemoteService.Stub.asInterface(service);
 
-            // We want to monitor the service for as long as we are
-            // connected to it.
             try {
                 mService.registerCallback(mCallback);
             } catch (RemoteException e) {
-                // In this case the service has crashed before we could even
-                // do anything with it; we can count on soon being
-                // disconnected (and then reconnected if it can be restarted)
-                // so there is no need to do anything here.
+
             }
 
-            // As part of the sample, tell the user what happened.
             Toast.makeText(MainActivity.this, "服务器已连接",
                     Toast.LENGTH_SHORT).show();
         }
 
         public void onServiceDisconnected(ComponentName className) {
-            // This is called when the connection with the service has been
-            // unexpectedly disconnected -- that is, its process crashed.
             mService = null;
-
-            // As part of the sample, tell the user what happened.
             Toast.makeText(MainActivity.this, "服务器断开连接",
                     Toast.LENGTH_SHORT).show();
         }
@@ -72,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                   // Toast.makeText(MainActivity.this,"客户端："+value,Toast.LENGTH_SHORT).show();
                     Log.i("huanghai","键盘输入："+value);
                 }
             });
